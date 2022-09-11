@@ -1,13 +1,13 @@
 //Tags
-import { View, FlatList, ActivityIndicator, RefreshControl } from "react-native";
+import { View, FlatList, ActivityIndicator, RefreshControl, Text } from "react-native";
 //Instruments
 import { useSelector, useDispatch } from "react-redux";
-import React, { useState } from "react";
+import React from "react";
 //Actions and select
-import { loadGoods, loadIGoods } from "../store/goods/goods-actions";
-import { selectGoods } from "../store/goods/goods-select";
+import { loadUsers } from "../store/users/users-actions";
+import { selectUsers } from "../store/users/users-select";
 //Components
-import { GoodsItem } from "../Components/GoodsItem";
+import { UsersItem } from "../Components/UsersItem";
 //styleId
 import styled from 'react-native-styled-components';
 const ImageListView = styled(View, {
@@ -20,11 +20,11 @@ const Preload = styled(View, {
 	alignItems: "center",
 	justifyContent: "center"
 })
-function GoodList({ navigation }) {
+function UsersList({ navigation }) {
 	const dispatch = useDispatch();
-	const { status, goods, error } = useSelector(selectGoods);
+	const { status, users, error } = useSelector(selectUsers);
 	React.useEffect(() => {
-		dispatch(loadGoods())
+		dispatch(loadUsers())
 	}, []);
 	return (
 		<ImageListView>
@@ -35,11 +35,11 @@ function GoodList({ navigation }) {
 				error && <Text >{error}</Text>
 			}
 			<FlatList
-				data={goods}
-				renderItem={({ item }) => <GoodsItem {...item.user} navigation={navigation} />}
+				data={users}
+				renderItem={({ item }) => <UsersItem {...item.user} navigation={navigation} />}
 			/>
 		</ImageListView>
 	)
 }
 
-export { GoodList }
+export { UsersList }

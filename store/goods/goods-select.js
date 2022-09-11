@@ -1,1 +1,0 @@
-export const selectGoods = (store) => store.goods;

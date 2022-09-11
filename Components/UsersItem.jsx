@@ -27,21 +27,21 @@ const UserImage = styled(Image, {
 })
 const LocationText = styled(Text, {
 })
-function GoodsItem(props) {
+function UsersItem(props) {
 	const { profile_image, name, location, navigation } = props;
 	return (
-		<TouchableOpacity onPress={() => navigation.navigate("FullImage", { url: profile_image.large })}>
-			<GoodsItemViev >
+		<GoodsItemViev >
+			<TouchableOpacity onPress={() => navigation.navigate("FullImage", { url: profile_image.large })}>
 				<View >
 					<UserImage source={{ uri: profile_image.large }} />
 				</View>
-				<View >
-					<Text >{name}</Text>
-					<LocationText>Location: {location ? location : "This user has no location"}</LocationText>
-				</View>
-			</GoodsItemViev>
-		</TouchableOpacity>
+			</TouchableOpacity>
+			<View >
+				<Text >{name}</Text>
+				<LocationText>Location: {location ? location : "This user has no location"}</LocationText>
+			</View>
+		</GoodsItemViev>
 	)
 }
 
-export { GoodsItem }
+export { UsersItem }
